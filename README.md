@@ -2,4 +2,4 @@
 
 My simple javascript game
 
-Playable [here](http://spkerkela.github.io/gemhunter/).
+Playable [here](https://spkerkela.github.io/gemhunter/).
