@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <!-- Author Simo-Pekka Kerkelä 04.05.2013 -->
 <html>
+
 <head>
-	<title>Gem Hunter</title>
-<script src="lib/jquery-1.9.1.min.js"></script>
-<script src="lib/crafty.js"></script>
-<script src="src/game.js"></script>
-<script src="src/components.js"></script>
-<script src="src/scenes.js"></script>
-<script>
-$(document).ready(function () {
-	window.addEventListener('load', Game.start);
-});
-</script>
-<link href='http://fonts.googleapis.com/css?family=Fondamento' rel='stylesheet' type='text/css'>
-<style type="text/css" media="screen">
+  <title>Gem Hunter</title>
+  <script src="lib/jquery-1.9.1.min.js"></script>
+  <script src="lib/crafty-min.js"></script>
+  <script src="src/game.js"></script>
+  <script src="src/components.js"></script>
+  <script src="src/scenes.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Fondamento' rel='stylesheet' type='text/css'>
+  <style type="text/css" media="screen">
     body {
       background: black;
       text-align: center;
       color: #DDD;
       font-family: Arial;
     }
- 
+
     .controls {
       color: #BBB;
     }
- 
-    #cr-stage { margin: 20px auto 0; }
- 
+
+    #cr-stage {
+      margin: 20px auto 0;
+    }
+
     .bottom {
       font-size: 12px;
       color: #888;
       margin-top: 50px;
     }
- 
+
     .bottom a {
       color: #AAA;
     }
 
-    #lvl, #lives, #score {
+    #lvl,
+    #lives,
+    #score {
       margin: 3em;
     }
 
@@ -53,18 +53,25 @@ $(document).ready(function () {
     #score {
       color: #55E68C;
     }
+
     h1 {
       font-family: 'Fondamento', cursive;
       color: orange;
     }
   </style>
 </head>
+
 <body>
-	<h1>Gem Hunter</h1>
-	<h2>How to play:</h2>
-	<p>W, A, S, D or the arrow keys to move. Avoid baddies, try to get all the gems!</p>
-	<small id="lvl">Level: 1</small>
-	<small id="lives">Current lives: 3</small>
-	<small id="score">Current score: 0</small>
+  <h1>Gem Hunter</h1>
+  <h2>How to play:</h2>
+  <p>W, A, S, D or the arrow keys to move. Avoid baddies, try to get all the gems!</p>
+  <small id="lvl">Level: 1</small>
+  <small id="lives">Current lives: 3</small>
+  <small id="score">Current score: 0</small>
+  <script>
+    Game.start();
+  </script>
+
 </body>
+
 </html>
