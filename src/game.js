@@ -22,7 +22,6 @@ Game = {
     // Alustetaan pelimoottori
     Crafty.init(Game.width(), Game.height());
     // Taustakuva
-    Crafty.background("url(assets/background.png)");
     // Pelin ensimmäinen näyttöruutu on latausikkuna
     Crafty.scene("Loading");
   },

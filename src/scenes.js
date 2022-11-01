@@ -1,9 +1,21 @@
 var score = 0;
 var level = 0;
+var levelBackgrounds = [
+  "grass-background-1",
+  "grass-background-2",
+  "lava-background-1",
+  "lava-background-2",
+  "lava-background-3",
+  "lava-background-4",
+].map(function (imageName) {
+  return `url(assets/${imageName}.png)`;
+});
 Crafty.scene(
   "Game",
   function () {
     // taulukko joka kertoo onko ruudussa jotain, eli onko se "blocked"
+
+    Crafty.background(levelBackgrounds[level % levelBackgrounds.length]);
     this.occupied = new Array(Game.map_grid.width);
     for (var i = 0; i < Game.map_grid.width; i++) {
       this.occupied[i] = new Array(Game.map_grid.height);
