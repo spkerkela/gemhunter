@@ -2,7 +2,7 @@ var score = 0;
 var level = 0;
 Crafty.scene(
   "Game",
-  function() {
+  function () {
     // taulukko joka kertoo onko ruudussa jotain, eli onko se "blocked"
     this.occupied = new Array(Game.map_grid.width);
     for (var i = 0; i < Game.map_grid.width; i++) {
@@ -60,7 +60,7 @@ Crafty.scene(
 
     // sidotaan 'GemVisited' eventti anonyymiin funktioon, joka nostaa scorea
     // ja päivittää UI:ta. jos kaikki gemit kerätty, levu päättyy voittoon
-    this.show_victory = this.bind("GemVisited", function() {
+    this.show_victory = this.bind("GemVisited", function () {
       score++;
       $("#score").html("Current score: " + score);
       if (!Crafty("Gem").length) {
@@ -70,7 +70,7 @@ Crafty.scene(
 
     // sidotaan 'PlayerHitMonster' eventti anonyymiin funktioon joka tiputtaa
     // pelaajan elämiä, päivittää UI jne
-    this.show_defeat = this.bind("PlayerHitMonster", function() {
+    this.show_defeat = this.bind("PlayerHitMonster", function () {
       player.lives--;
       Crafty.audio.play("hurt");
       $("#lives").html("Current lives: " + player.lives);
@@ -80,7 +80,7 @@ Crafty.scene(
       }
     });
   },
-  function() {
+  function () {
     // unbindataan eventtikuuntelijat etteivät niitä keräänny turhaan useiden levujen kuluessa
     this.unbind("GemVisited", this.show_victory);
     this.unbind("PlayerHitMonster", this.show_defeat);
@@ -90,18 +90,18 @@ Crafty.scene(
 // Voittoruutu, näyttää voitetun tason ja scoren
 Crafty.scene(
   "Victory",
-  function() {
+  function () {
     Crafty.e("2D, DOM, Text")
       .attr({ x: 0, y: Game.height() / 2 - 24, w: Game.width() })
       .text("Level " + (level + 1) + " cleared! Current score: " + score)
       .css($text_css);
-    this.restart_game = this.bind("KeyDown", function() {
+    this.restart_game = this.bind("KeyDown", function () {
       level++;
       $("#lvl").html("Level: " + (level + 1));
       Crafty.scene("Game");
     });
   },
-  function() {
+  function () {
     // unbindataan eventtikuuntelijat etteivät niitä keräänny turhaan useiden levujen kuluessa
     this.unbind("KeyDown", this.restart_game);
   }
@@ -110,7 +110,7 @@ Crafty.scene(
 // Häviöruutu, kertoo kuinka pitkälle pelaaja pääsi
 Crafty.scene(
   "Defeat",
-  function() {
+  function () {
     Crafty.e("2D, DOM, Text")
       .attr({ x: 0, y: Game.height() / 2 - 24, w: Game.width() })
       .text(
@@ -123,7 +123,7 @@ Crafty.scene(
       .css($text_css);
 
     // Napinpainalluksella peli alkaa alusta
-    this.restart_game = this.bind("KeyDown", function() {
+    this.restart_game = this.bind("KeyDown", function () {
       score = 0;
       level = 0;
       // jqueryä tähän väliin
@@ -133,14 +133,14 @@ Crafty.scene(
       Crafty.scene("Game");
     });
   },
-  function() {
+  function () {
     // unbindataan eventtikuuntelijat etteivät niitä keräänny turhaan useiden levujen kuluessa
     this.unbind("KeyDown", this.restart_game);
   }
 );
 
 // Latauscreeni, joka näkyy kun peli latautuu (ideaalitapauksessa ei koskaan kerkeä näkymään ruudulla)
-Crafty.scene("Loading", function() {
+Crafty.scene("Loading", function () {
   Crafty.e("2D, DOM, Text")
     .text("Loading...")
     .attr({ x: 0, y: Game.height() / 2 - 24, w: Game.width() })
@@ -151,7 +151,7 @@ Crafty.scene("Loading", function() {
     audio: {
       hurt: ["assets/hurt.ogg"],
       gem: ["assets/coin1.ogg"],
-      background: ["assets/timantti.ogg"]
+      background: ["assets/timantti.ogg"],
     },
     sprites: {
       "assets/tileset.png": {
@@ -161,19 +161,19 @@ Crafty.scene("Loading", function() {
           spr_tree: [0, 0],
           spr_bush: [1, 0],
           spr_gem: [0, 1],
-          spr_monster: [1, 1]
-        }
+          spr_monster: [1, 1],
+        },
       },
       "assets/hero.png": {
         tile: 32,
         tileh: 32,
         map: {
-          spr_player: [0, 0]
-        }
-      }
-    }
+          spr_player: [0, 0],
+        },
+      },
+    },
   };
-  Crafty.load(assetsObj, function() {
+  Crafty.load(assetsObj, function () {
     Crafty.audio.play("background", -1);
     Crafty.scene("Game");
   });
